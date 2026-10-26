@@ -160,6 +160,47 @@ section {
     background-blend-mode: multiply;
 }
 
+#sec-kontakty p {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    max-width:  50%;
+}
+
+
+#map{
+    margin-left: 55%;
+    margin-top: -15%;
+    position: relative;
+    display: block;
+    width: 25%;
+    aspect-ratio: 1/1;
+}
+
+#map img{
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+}
+
+#map iframe{
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    aspect-ratio: 1/1;
+    border: none;
+}
+
+
+.socials img {
+    width: 5vh;
+    height: auto;
+}
+
 #sec-o-akci {
     color: var(--dark-text-color);
 }
