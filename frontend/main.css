@@ -263,10 +263,22 @@ section {
     background-color: var(--main-light-color);
 }
 
+#sec-o-akci svg path {
+    fill: var(--dark-text-color);
+}
+
+#sec-o-akci svg {
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+    height: 10rem;
+}
+
+
 #sec-o-akci h1 {
-    margin-top: 2rem;
-    margin-bottom: 5rem;
-    margin-left: 2rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    margin-left: 6rem;
 }
 
 .o-akci-content {
