@@ -1,10 +1,14 @@
-// Put moving lines into canvas with id can_bgr_1 and keep the rest transparent.
+const canvas_id = [
+  "can_bgr_nav",
+  "can_bgr_uvod",
+  "can_bgr_o_akci",
+  "can_bgr_kontakty",
+];
 
-const canvas = document.getElementById("can_bgr_1");
-const ctx1 = canvas.getContext("2d");
+const canvases = [];
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+/*canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;*/
 
 const lines = [
   { x1: 0, y1: 0.5, x2: 0.3, y2: 1 },
@@ -25,10 +29,10 @@ const numLines = 50;
   });
 }*/
 
-function drawLines(ctx) {
+function drawLines(canvas, ctx, color, width = 6) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.strokeStyle = "rgba(155, 155, 155, 0.5)";
-  ctx.lineWidth = 4;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width;
 
   /*for (const line of lines) {
     const x2 = line.x + line.length * Math.cos(line.angle);
@@ -62,13 +66,33 @@ function drawLines(ctx) {
 }
 
 function animate() {
-  drawLines(ctx1);
+  for (const { canvas, ctx, color, width } of canvases) {
+    drawLines(canvas, ctx, color, width);
+  }
+  //drawLines(canvases[0].canvas, canvases[0].ctx);
   requestAnimationFrame(animate);
 }
 
 animate();
 
 window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  /*canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;*/
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  canvas_id.forEach((id) => {
+    const canvas = document.getElementById(id);
+    const ctx = canvas.getContext("2d");
+    canvas.width = document.getElementById(id).clientWidth;
+    canvas.height = document.getElementById(id).clientHeight;
+    let color = "rgba(198, 209, 196, 0.6)"; // Default color
+    if (id === "can_bgr_uvod") {
+      color = "rgba(142, 149, 140, 0.6)";
+    }
+
+    canvases.push({ canvas, ctx, color, width: id === "can_bgr_nav" ? 4 : 6 });
+  });
+
+  console.log(canvases);
 });

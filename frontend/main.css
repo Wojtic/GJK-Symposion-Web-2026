@@ -7,8 +7,11 @@
 :root {
     --main-light-color: #8f9c96;
     --main-dark-color: #072416;
-    --dark-text-color: #072416;
-    --light-text-color: #7e8d85;
+    --white-color: #f6fff3;
+    /*--dark-text-color: #072416;*/
+    /*--light-text-color: #7e8d85;*/
+    --light-text-color: rgba(246, 255, 243, 0.6);
+    --dark-text-color: rgba(4, 17, 11, 0.8);
 }
 
 @font-face {
@@ -22,7 +25,7 @@
 }
 
 body {
-    background-color: var(--main-light-color);
+    /*background-color: var(--main-light-color);*/
     font-family: "Open Sans", sans-serif;
     font-weight: 700;
 }
@@ -33,7 +36,7 @@ html {
 }
 
 .fullscreen {
-    height: calc(100vh - 8rem);
+    height: calc(100vh - clamp(2rem, calc(6vw + 0.2rem), 8rem));
 }
 
 .anchor {
@@ -45,7 +48,7 @@ html {
 }
 
 p {
-    font-size: 1.5rem;
+    font-size: min(1.5rem, 4vw);
     line-height: 2rem;
     margin-bottom: 1rem;
     font-weight: 700;
@@ -58,50 +61,44 @@ h1 {
     font-weight: 500;
 }
 
+h2 {
+    font-size: 2.5rem;
+    line-height: 4rem;
+    font-weight: 600;
+}
+
 /* ------------------------ NAVIGATION ------------------------ */
 
 nav {
-    z-index: 1000;
+    /*background-color: var(--main-light-color);*/
     position: sticky;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 8rem;
-    background-color: var(--main-light-color);
-    color: var(--dark-text-color);
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    height: 100%;
-    width: 100%;
+    z-index: 5;
 }
 
-nav ul li {
-    margin: 0 1rem;
-    height: 100%;
-    display: inline-block;
-    width: 33%;
+nav canvas {
+    background-color: var(--main-light-color);
 }
 
-nav ul li a {
-    color: var(--dark-text-color);
-    display: block;
-    line-height: 8rem;
+nav #links {
+    display: flex;
+    justify-content: center;
+}
+
+nav #links a {
+    flex-grow: 1;
     text-decoration: none;
-    text-align: center;
-    font-size: 3rem;
+    color: var(--dark-text-color);
+    font-size: clamp(1rem, calc(3vw + 0.1rem), 4rem);
+    line-height: clamp(2rem, calc(6vw + 0.2rem), 8rem);
     font-weight: 600;
-    width: 100%;
+
+    display: inline-block;
+    padding: 0.2em 0.2em 0.1em 0.2em;
+    text-align: center;
 }
 
 /* ------------------------ SECTIONS ------------------------ */
@@ -113,15 +110,44 @@ section {
 
 #banner {
     background-color: var(--main-light-color);
-    background-image: url("media/banner.png");
+    background-image: url("media/IMG_3923.jpg");
     background-size: cover;
     background-position: top;
 }
 
+#banner svg {
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 50%;
+}
+
+#banner p {
+    color: var(--white-color);
+    font-size: 3rem;
+}
+
+#banner #symposion2026 {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+#banner #gjk {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    transform: rotateZ(270deg) translate(calc(-100% + 2rem), -200%);
+    transform-origin: left top;
+}
+
 #sec-uvod {
-    background-color: var(--main-dark-color);
     color: var(--light-text-color);
     padding-left: 1rem;
+}
+
+#sec-uvod canvas {
+    background-color: var(--main-dark-color);
 }
 
 #sec-uvod .row {
@@ -160,31 +186,59 @@ section {
     background-blend-mode: multiply;
 }
 
+#sec-kontakty {
+    color: var(--dark-text-color);
+}
+
 #sec-kontakty p {
     display: flex;
     align-items: flex-start;
     justify-content: left;
-    max-width:  50%;
+    max-width: 50%;
 }
 
+#sec-kontakty canvas {
+    background-color: var(--main-light-color);
+}
 
-#map{
+#sec-kontakty h1 {
+    font-family: Horizon;
+    margin-top: 2rem;
+}
+
+#sec-kontakty h2 {
+    margin-top: 2rem;
+}
+
+#sec-kontakty .socials {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    gap: 2rem;
+}
+
+#sec-kontakty .socials img {
+    width: 10vh;
+}
+
+#map {
     margin-left: 55%;
-    margin-top: -15%;
+    margin-top: -25%;
     position: relative;
     display: block;
     width: 25%;
     aspect-ratio: 1/1;
 }
 
-#map img{
+#map img {
     display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 1/1;
 }
 
-#map iframe{
+#map iframe {
     position: absolute;
     top: 10%;
     bottom: 10%;
@@ -203,6 +257,10 @@ section {
 
 #sec-o-akci {
     color: var(--dark-text-color);
+}
+
+#sec-o-akci canvas {
+    background-color: var(--main-light-color);
 }
 
 #sec-o-akci h1 {
@@ -228,7 +286,7 @@ section {
 
 
 #credits {
-    height: 20vh;
+    height: 10vh;
     background-color: var(--main-dark-color);
     color: var(--light-text-color);
 }
@@ -236,11 +294,19 @@ section {
 
 
 canvas {
-    z-index: 0;
+    z-index: -1;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     display: block;
+}
+
+
+@media screen and (min-width: 1000px) {
+    section p {
+        font-size: calc(clamp(1rem, 1vw + 0.3rem, 1.3rem));
+    }
+
 }
