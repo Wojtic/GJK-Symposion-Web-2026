@@ -152,6 +152,7 @@ section {
 #sec-uvod {
     color: var(--light-text-color);
     padding-left: 1rem;
+    padding-top: 4rem;
 }
 
 #sec-uvod canvas {
