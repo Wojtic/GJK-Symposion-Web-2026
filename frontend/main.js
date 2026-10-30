@@ -65,19 +65,19 @@ function drawLines(canvas, ctx, color, width = 6) {
   }
 }
 
-function animate() {
+function animate2() {
   for (const { canvas, ctx, color, width } of canvases) {
     drawLines(canvas, ctx, color, width);
   }
-  //drawLines(canvases[0].canvas, canvases[0].ctx);
-  requestAnimationFrame(animate);
+  requestAnimationFrame(animate2);
 }
 
-animate();
 
 window.addEventListener("resize", () => {
-  /*canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;*/
+  for (const { canvas } of canvases) {
+    canvas.width = document.getElementById(canvas.id).clientWidth;
+    canvas.height = document.getElementById(canvas.id).clientHeight;
+  }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -94,5 +94,5 @@ document.addEventListener("DOMContentLoaded", () => {
     canvases.push({ canvas, ctx, color, width: id === "can_bgr_nav" ? 4 : 6 });
   });
 
-  console.log(canvases);
+  animate2();
 });

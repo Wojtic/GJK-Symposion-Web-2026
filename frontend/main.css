@@ -42,7 +42,7 @@ html {
 .anchor {
     display: block;
     position: absolute;
-    top: -8rem;
+    top: calc(-1 * clamp(2rem, calc(6vw + 0.2rem), 8rem));
     visibility: hidden;
     scroll-snap-align: start;
 }
