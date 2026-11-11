@@ -1,10 +1,10 @@
 {
-    "annotation": "Sklo neslouží jen jako materiál, nýbrž i jako metafora společenských nerovností. Pojmy jako „skleněný strop“ a „skleněná podlaha“ označují bariéry, které jsou průhledné, a přesto těžko prostupné. Přednáška sleduje, jak se v Česku od pozdního socialismu po současnost předávají a zhodnocují různé druhy výhod: majetek, vzdělání, kulturní návyky i osobní kontakty. Zaměří se přitom na to, jak se po roce 1989 zděděné výhody proměnily v něco, co dnes nazýváme zásluhou.",
     "end_time": "17:50",
-    "id": 51,
-    "name": "Vítězslav Sommer",
-    "profile": "Vítězslav Sommer je historik z Ústavu pro soudobé dějiny AV ČR, který se dívá pod pokličku československého plánování a ekonomiky po roce 1945. Zajímá ho, jak se dřívější režim snažil „řídit socialismus jako firmu“ nebo jak fungovala tehdejší ekonomická prognostika. Aktuálně zkoumá příběh transformace devadesátých let a co pro Zlínsko znamenal úpadek slavného obuvnického průmyslu. Je držitelem Ceny Otty Wichterleho pro nadějné vědce.",
-    "room": "P2.2",
     "start_time": "16:00",
-    "title": "Třída, zásluhy a kapitál: dlouhé dějiny českých skleněných stropů"
+    "name": "Vítězslav Sommer",
+    "title": "Třída, zásluhy a kapitál: dlouhé dějiny českých skleněných stropů",
+    "id": 51,
+    "profile": "Vítězslav Sommer je historik z Ústavu pro soudobé dějiny AV ČR, který se dívá pod pokličku československého plánování a ekonomiky po roce 1945. Zajímá ho, jak se dřívější režim snažil „řídit socialismus jako firmu“ nebo jak fungovala tehdejší ekonomická prognostika. Aktuálně zkoumá příběh transformace devadesátých let a co pro Zlínsko znamenal úpadek slavného obuvnického průmyslu. Je držitelem Ceny Otty Wichterleho pro nadějné vědce.",
+    "room": "Sborovna",
+    "annotation": "Sklo neslouží jen jako materiál, nýbrž i jako metafora společenských nerovností. Pojmy jako „skleněný strop“ a „skleněná podlaha“ označují bariéry, které jsou průhledné, a přesto těžko prostupné. Přednáška sleduje, jak se v Česku od pozdního socialismu po současnost předávají a zhodnocují různé druhy výhod: majetek, vzdělání, kulturní návyky i osobní kontakty. Zaměří se přitom na to, jak se po roce 1989 zděděné výhody proměnily v něco, co dnes nazýváme zásluhou."
 }

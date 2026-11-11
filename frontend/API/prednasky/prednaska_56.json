@@ -1,10 +1,10 @@
 {
-    "annotation": "Sklo si obvykle představujeme jako průhledný, křehký materiál. Ve fyzice má však tento pojem mnohem širší význam. Co odlišuje sklo od krystalu? A co mají společného okenní tabule, neuspořádané magnety a lidský mozek? Nahlédneme do světa atomů a magnetických momentů, kde neuspořádanost a vzájemně soupeřící interakce vedou k překvapivým vlastnostem. Ukážeme si, proč si spinová skla dokáží „pamatovat“ svou minulost a jak podobné fyzikální principy inspirují nové způsoby zpracování informací. Od zdánlivého chaosu se tak dostaneme až k neuromorfním počítačům a snaze napodobit některé principy fungování lidského mozku.",
     "end_time": "10:50",
-    "id": 56,
-    "name": "Jana Kalbáčová Vejpravová",
-    "profile": "prof. RNDr. Jana Kalbáčová Vejpravová, Ph.D. vystudovala chemii na UK v Praze, později se však zaměřila na fyziku kondenzovaných látek a výzkum materiálů. Působila na několika zahraničních pracovištích, mimo jiné Hasselt University v Belgii nebo National Institute for Materials Science v japonské Tsukubě. Ve své práci se snaží zjistit, proč některé pevné látky reagují na světlo a jiné vlivy určitým způsobem a jak tyto reakce dál využít například v elektronice, biomedicíně, ale i běžném životě. Za svou práci získala několik prestižních ocenění, kupříkladu  EPS Emmy Noether Distinction 2025 (mid-career) z letošního jara. Dále je také jako jedna z mála Češek držitelkou prestižního grantu Evropské výzkumné rady. Je vedoucí projektu TSuNAMI, který propojuje fyziky, chemiky a biomediky. Jejich nedávným objevem je nový typ dvojrozměrného materiálu, který by mohl najít své využití v počítačích nové generace. Dále je také klíčovou postavou vědeckého konsorcia v projektu #AMULET a na MFF UK vede laboratoř, která patří mezi několik málo na světě, kde je možné kombinovat pokročilé optické spektroskopie s extrémními podmínkami.",
-    "room": "P1.1",
     "start_time": "09:00",
-    "title": "Má chaos paměť? Od magnetických skel k umělému mozku"
+    "name": "Kamila Fialová",
+    "title": "Za sklem prosperity: chudoba, nerovnosti a životní úroveň v Česku",
+    "id": 56,
+    "profile": "PhDr. Kamila Fialová, Ph.D. je ekonomka, ve svém výzkumu se zaměřuje především na trh práce, příjmové nerovnosti a chudobu. Absolvovala Institut ekonomických studií FSV UK v Praze, kde v roce 2012 získala doktorát.",
+    "room": "Aula",
+    "annotation": "Česko patří v evropských statistikách k zemím s nejnižší mírou příjmové chudoby i příjmových nerovností – znamená to ale, že se u nás všem žije dobře? Podíváme se, co o životní úrovni vypovídají údaje o příjmech, majetku i subjektivním hodnocení životní situace a proč mohou souhrnné statistiky některé problémy zakrývat. Prozkoumáme také neviditelné bariéry a skleněné stropy, které ovlivňují životní šance – například vliv rodinného zázemí na vzdělání a budoucí výdělky – i křehkost finančních jistot domácností. Nakonec se zamyslíme nad tím, zda bohatší společnost znamená také spokojenější společnost, a jakou roli v tom hrají nerovnosti."
 }

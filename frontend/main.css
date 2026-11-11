@@ -31,11 +31,14 @@ body {
     font-weight: 700;
 }
 
+html:has(:target) {
+  scroll-behavior: smooth;
+}
+
 html {
     --navbar-height: clamp(2rem, calc(6vw + 0.2rem), 8rem);
 
-    scroll-behavior: smooth;
-    scroll-snap-type: y proximity;
+    scroll-behavior: auto;
     scroll-padding: var(--navbar-height) 0 0;
 }
 

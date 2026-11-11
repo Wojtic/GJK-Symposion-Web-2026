@@ -1,10 +1,10 @@
 {
-    "annotation": "anotaci připravujeme",
     "end_time": "17:50",
-    "id": 50,
-    "name": "Martin Mareš",
-    "profile": "Mgr. Martin Mareš působí jako lektor na Katedře aplikované matematiky Matematicko-fyzikální fakulty Univerzity Karlovy v Praze, kde se věnuje výzkumu a výuce v oblasti informatiky. Zaměřuje se na teoretickou informatiku a algoritmy a je spoluautorem knihy Průvodce labyrintem algoritmů. Podílí se na organizaci Korespondenčního semináře z programování, Matematické olympiády a Mezinárodní informatické olympiády.",
-    "room": "P1.1",
     "start_time": "16:00",
-    "title": "Čeština v zrcadle času"
+    "name": "Martin Mareš",
+    "title": "Čeština v zrcadle času",
+    "id": 50,
+    "profile": "Mgr. Martin Mareš působí jako lektor na Katedře aplikované matematiky Matematicko-fyzikální fakulty Univerzity Karlovy v Praze, kde se věnuje výzkumu a výuce v oblasti informatiky. Zaměřuje se na teoretickou informatiku a algoritmy a je spoluautorem knihy Průvodce labyrintem algoritmů. Podílí se na organizaci Korespondenčního semináře z programování, Matematické olympiády a Mezinárodní informatické olympiády.",
+    "room": "Aula",
+    "annotation": "Češtinou mluvíme, píšeme, učíme se o ní. Jak moc ji ale známe? Kde se čeština vzala a jak souvisí s ostatními evropskými jazyky? Co jsme během staletí získali, o co jsme přišli a co se mění právě teď? Kolik je češtin a která je ta správná? Proč už Jan Hus spílal Pražanům? Třeba navrhneme i vlastní pravopisnou reformu."
 }

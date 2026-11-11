@@ -1,0 +1,10 @@
+{
+    "end_time": "10:50",
+    "start_time": "09:00",
+    "name": "Tereza Klimošová",
+    "title": "Kolika barvami lze obarvit vitráž?",
+    "id": 58,
+    "profile": "Mgr. Tereza Klimošová, Ph.D. je vyučující na katedře aplikované matematiky na Matematicko-fyzikální fakultě Univerzity Karlovy. V roce 2016 obdržela doktorát na univerzitě Warwick a jako postdoktorandka působila na univerzitě École normale supérieure. Ve svém výzkumu se zabývá zejména teorií grafů, kombinatorikou a algoritmy.",
+    "room": "USV",
+    "annotation": "Jak obarvit vitráž tak, aby sousední skleněné tabulky neměly stejnou barvu? Závisí potřebný počet barev na počtu tabulek nebo na složitosti jejich uspořádání? Je nějaký počet barev, který vystačí na každou vitráž? Převedeme problém do řeči teorie grafů a budeme hledat co nejlepší odpověď."
+}

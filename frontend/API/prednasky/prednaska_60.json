@@ -1,10 +1,10 @@
 {
-    "annotation": "Jak obarvit vitráž tak, aby sousední skleněné tabulky neměly stejnou barvu? Závisí potřebný počet barev na počtu tabulek nebo na složitosti jejich uspořádání? Je nějaký počet barev, který vystačí na každou vitráž? Převedeme problém do řeči teorie grafů a budeme hledat co nejlepší odpověď.",
-    "end_time": "10:50",
+    "end_time": "12:50",
+    "start_time": "11:00",
+    "name": "Markéta Swiacká",
+    "title": "Vidět neznamená rozumět: Lidé, luskouni a ochrana přírody v Republice Kongo",
     "id": 60,
-    "name": "Tereza Klimošová",
-    "profile": "Mgr. Tereza Klimošová, Ph.D. je vyučující na katedře aplikované matematiky na Matematicko-fyzikální fakultě Univerzity Karlovy. V roce 2016 obdržela doktorát na univerzitě Warwick a jako postdoktorandka působila na univerzitě École normale supérieure. Ve svém výzkumu se zabývá zejména teorií grafů, kombinatorikou a algoritmy.",
-    "room": "USV",
-    "start_time": "09:00",
-    "title": "Kolika barvami lze obarvit vitráž?"
+    "profile": "Ing. Markéta Swiacká vystudovala na ČZU na Fakultě tropického zemědělství. Ve své práci se zabývá vyhodnocením hrozeb pro africké luskouny v Konžské pánvi. Dále se také zajímá o témata ilegálního obchodu a rozvoje místních komunit, které úzce souvisejí nejen s luskouny.",
+    "room": "P1.1",
+    "annotation": "Jak chránit ohrožená zvířata v místech, kde jsou lidé na přírodních zdrojích existenčně závislí? A nakolik náš pohled na ochranu přírody ovlivňuje prostředí, ze kterého pocházíme?\nPřednáška nás zavede do tropických pralesů Konžské pánve, kde se již několik let věnuji výzkumu ohrožených luskounů. Na základě osobních zkušeností z terénu, rozhovorů s obyvateli vesnic a vědeckých výsledků ukážu, jak se ochrana ohrožených druhů prolíná s každodenním životem lidí, kteří s nimi sdílejí stejné prostředí. A proč ani znalost biologie, zákonů a fungování chráněných území nemusí stačit k pochopení toho, co se v pralese skutečně odehrává.\nSklo nám umožňuje vidět, co je na druhé straně, ale zároveň nás od toho odděluje. Podobně nám i vlastní představy mohou bránit vidět souvislosti, které jsou pro pochopení skutečnosti zásadní."
 }

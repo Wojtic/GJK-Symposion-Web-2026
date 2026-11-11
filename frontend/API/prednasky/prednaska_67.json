@@ -1,10 +1,10 @@
 {
-    "annotation": "Jak vypadá svět očima optometristy? Nahlédneme do zákulisí profese, která pomáhá lidem lépe vidět. Představíme si rozdíly mezi optikem, optometristou a očním lékařem, nahlédneme do běžného pracovního dne optometristy a seznámíme se s přístroji a materiály, které při péči o zrak používá. Součástí bude také praktická ukázka měření zraku a možnost vyzkoušet si, jak svět vidí lidé s různými zrakovými vadami.",
-    "end_time": "12:50",
+    "end_time": "15:50",
+    "start_time": "14:00",
+    "name": "Robert Šámal",
+    "title": "",
     "id": 67,
-    "name": "Jan Soukup",
-    "profile": "Ing. Jan Soukup vystudoval optiku a optometrii na ČVUT, kde následně získal titul Ing. v oboru Systémová integrace procesů ve zdravotnictví. Zkušenosti získal v očních optikách Mister Optic a GrandOptical i během pracovního pobytu v Kanadě. Od roku 2022 působí jako optometrista v rodinné oční optice Optik Spektrum na pražských Vinohradech, kde se zaměřuje na vyšetření zraku a aplikaci kontaktních čoček.",
-    "room": "P2.3",
-    "start_time": "11:00",
-    "title": "Svět očima optometristy"
+    "profile": "Doc. Mgr. Robert Šámal, Ph.D. působí na Informatickém institutu Univerzity Karlovy, kde se zabývá zejména teorií grafů, kombinatorikou a teoretickou informatikou. Je autorem řady vědeckých článků a podílel se na učebnici Mathematics++. V minulosti obdržel cenu nadace Neuron pro mladé vědce a vedl Matematický korespondenční seminář pro středoškoláky, který nyní zaštiťuje.",
+    "room": "P2.2",
+    "annotation": "anotaci připravujeme"
 }
