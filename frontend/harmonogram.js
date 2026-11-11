@@ -4,7 +4,8 @@ async function fill_harmonogram() {
     // const harmonogramURL = "./API/harmonogram/harmonogram.json";
     //const harmonogramURL = "https://script.google.com/macros/s/AKfycbz9cCngIjCHImvNlkVv7EbRpNjKiiEuscW5mkeKXrCBid6R-H73jzyKOXzB9BXzSVIN3g/exec?getHarmonogram";
     //const harmonogramURL = "http://127.0.0.1:8080/API/harmonogram";
-    const harmonogramURL = "https://backend-63651199757.europe-central2.run.app/API/harmonogram"
+    const harmonogramURL =
+      "https://backend-63651199757.europe-central2.run.app/API/harmonogram";
     const url = harmonogramURL; //+ "&t=" + time;
     let data;
     try {
@@ -81,11 +82,10 @@ async function fill_harmonogram() {
 
       lectures.forEach((lecture) => {
         const cell = document.createElement("td");
-        if (lecture.name != "" && lecture.title != "") {
+        if (lecture.name != "" && lecture.name != "-") {
           cell.setAttribute("onclick", "popup(" + lecture.id + ")");
           cell.classList.add("clickable");
-        }
-        if (lecture.name == "" && lecture.title == "" || lecture.name == "-") {
+        } else {
           cell.classList.add("empty");
           lecture.name = "";
         }
@@ -108,11 +108,11 @@ async function fill_harmonogram() {
   });
 }
 
-
 function showPopup() {
   document.getElementById("popup").style.display = "block";
   document.getElementById("background_darken").style.display = "block";
   reset_popup();
+  document.getElementById("popup").focus();
 }
 
 function closePopup() {
@@ -125,7 +125,8 @@ async function popup(id) {
     // const url = "./API/prednasky/prednaska_" + id + ".json";
     //const url = "https://script.google.com/macros/s/AKfycbz9cCngIjCHImvNlkVv7EbRpNjKiiEuscW5mkeKXrCBid6R-H73jzyKOXzB9BXzSVIN3g/exec?getLecture";
     // const url = "http://127.0.0.1:8080/API/prednaska/" + id;
-    const url = "https://backend-63651199757.europe-central2.run.app/API/prednaska/" + id;
+    const url =
+      "https://backend-63651199757.europe-central2.run.app/API/prednaska/" + id;
     let data;
     try {
       data = await cachedFetch("prednaska" + id, url, 180);
@@ -148,10 +149,13 @@ async function popup(id) {
 
   const data = await getData();
 
+  data.profile = data.profile.replace(/\n/g, "<br>");
+  data.annotation = data.annotation.replace(/\n/g, "<br>");
+
   document.getElementById("popup_title").textContent = data.title;
   document.getElementById("popup_presenter").textContent = data.name;
-  document.getElementById("popup_annotation").textContent = data.annotation;
-  document.getElementById("popup_profile").textContent = data.profile;
+  document.getElementById("popup_annotation").innerHTML = data.annotation;
+  document.getElementById("popup_profile").innerHTML = data.profile;
   document.getElementById("popup_room").textContent = data.room;
   document.getElementById("popup_time").textContent =
     data.start_time + " - " + data.end_time;
@@ -165,7 +169,7 @@ async function cachedFetch(name, url, refresh_time) {
   if (lst in localStorage) {
     if (t - localStorage[lst] < refresh_time) {
       console.log(
-        "fetch to " + url + " was cached " + (t - localStorage[lst]) + "s ago"
+        "fetch to " + url + " was cached " + (t - localStorage[lst]) + "s ago",
       );
       return JSON.parse(localStorage[name]);
     }
@@ -191,7 +195,7 @@ async function cachedFetch(name, url, refresh_time) {
           url +
           " from " +
           (t - localStorage[lst]) +
-          "s ago"
+          "s ago",
       );
       return localStorage[name];
     }

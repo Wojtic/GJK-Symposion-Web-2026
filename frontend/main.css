@@ -36,14 +36,14 @@ html:has(:target) {
 }
 
 html {
-    --navbar-height: clamp(2rem, calc(6vw + 0.2rem), 8rem);
+    --navbar-height: min(clamp(2rem, calc(6vw + 0.2rem), 8rem), 10vh);
 
     scroll-behavior: auto;
     scroll-padding: var(--navbar-height) 0 0;
 }
 
 .fullscreen {
-    min-height: calc(100vh - clamp(2rem, calc(6vw + 0.2rem), 8rem));
+    min-height: calc(100vh - var(--navbar-height));
 }
 
 p {
@@ -92,7 +92,7 @@ nav #links a {
     text-decoration: none;
     color: var(--dark-text-color);
     font-size: clamp(1rem, calc(3vw + 0.1rem), 4rem);
-    line-height: clamp(2rem, calc(6vw + 0.2rem), 8rem);
+    line-height: var(--navbar-height);
     font-weight: 600;
 
     display: inline-block;
@@ -110,7 +110,7 @@ section {
 #banner {
     overflow: hidden;
     scroll-snap-align: start;
-    min-height: calc(100svh - clamp(2rem, calc(6vw + 0.2rem), 8rem));
+    min-height: calc(100svh - var(--navbar-height));
 }
 
 #banner_bgr {
@@ -206,7 +206,7 @@ section {
     }
 
     #uvod .row {
-        height: calc((100vh - clamp(2rem, calc(6vw + 0.2rem), 8rem)) / 4.5);
+        height: calc((100vh - var(--navbar-height)) / 4.5);
         width: 80vw;
     }
 
@@ -223,7 +223,7 @@ section {
 
 @media (orientation: portrait) {
     #uvod .row {
-        height: calc((100vh - clamp(2rem, calc(6vw + 0.2rem), 8rem)) / 8);
+        height: calc((100vh - var(--navbar-height)) / 8);
         width: 80vw;
         gap: 2rem;
     }
