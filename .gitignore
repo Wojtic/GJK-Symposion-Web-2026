@@ -1,0 +1,9 @@
+backend/build
+backend/build/*
+backend/cmake-build-debug
+backend/cmake-build-debug/*
+backend/.idea
+backend/.idea/*
+build/
+build/*
+.vscode/

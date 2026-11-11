@@ -1,9 +1,9 @@
 async function fill_harmonogram() {
   const getData = async () => {
     const time = new Date().getTime(); // Add it to the URL to prevent caching
-    const harmonogramURL = "./API/harmonogram/harmonogram.json";
+    // const harmonogramURL = "./API/harmonogram/harmonogram.json";
     //const harmonogramURL = "https://script.google.com/macros/s/AKfycbz9cCngIjCHImvNlkVv7EbRpNjKiiEuscW5mkeKXrCBid6R-H73jzyKOXzB9BXzSVIN3g/exec?getHarmonogram";
-    //const harmonogramURL = "http://127.0.0.1:8080/API/harmonogram";
+    const harmonogramURL = "http://127.0.0.1:8080/API/harmonogram";
     const url = harmonogramURL; //+ "&t=" + time;
     let data;
     try {
@@ -120,9 +120,9 @@ function closePopup() {
 
 async function popup(id) {
   const getData = async () => {
-    const url = "./API/prednasky/prednaska_" + id + ".json";
+    // const url = "./API/prednasky/prednaska_" + id + ".json";
     //const url = "https://script.google.com/macros/s/AKfycbz9cCngIjCHImvNlkVv7EbRpNjKiiEuscW5mkeKXrCBid6R-H73jzyKOXzB9BXzSVIN3g/exec?getLecture";
-    //const url = "http://127.0.0.1:8080/API/prednaska/" + id;
+    const url = "http://127.0.0.1:8080/API/prednaska/" + id;
     let data;
     try {
       data = await cachedFetch("prednaska" + id, url, 180);

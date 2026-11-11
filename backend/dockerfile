@@ -1,0 +1,46 @@
+FROM alpine:edge AS buildstage
+
+RUN apk update && \
+    apk add --no-cache \
+        build-base \
+        cmake \
+        boost-dev \
+        git \
+        curl-dev \
+        openssl-dev \
+        meson \
+        libunistring-dev \
+        ninja \
+        pkgconf
+
+WORKDIR /harmonogramserver
+COPY . .
+
+RUN cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF
+RUN cmake --build build --config Release
+
+FROM alpine:edge AS runstage
+
+RUN apk update && \
+    apk add --no-cache \
+    libstdc++ \
+    boost-program_options \
+    openssl \
+    ca-certificates \
+    curl
+
+RUN addgroup -S runuser && adduser -S runuser -G runuser
+
+WORKDIR /app
+
+COPY --from=buildstage \
+    harmonogramserver/build/backend \
+    .
+
+RUN ls 
+
+USER runuser
+
+EXPOSE 8080
+
+CMD [ "./backend" ]
