@@ -170,7 +170,7 @@
   color: var(--dark-text-color);
   font-size: min(1.3rem, 4vw);
   padding: 2rem;
-  overflow: scroll;
+  overflow-y: scroll;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
@@ -327,8 +327,4 @@
   60% {
     transform: translate3d(4px, 0, 0);
   }
-}
-
-#popup_content {
-  overflow-y: scroll;
 }

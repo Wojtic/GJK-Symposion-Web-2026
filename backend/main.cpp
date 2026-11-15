@@ -124,12 +124,12 @@ class Harmonogram
     bool is_ready = false;
     time_t last_fetch_time;
 
-    const u_int TTL = 900; // Time to live in seconds; 900 = 30 min
+    const u_int TTL = 1800; // Time to live in seconds; 1800 = 30 min
     const string URL = "https://docs.google.com/spreadsheets/d/1JpmNZXqIA_AQWs6JQbDYk9MqxdLqfUBAFA9d9XpK8ek/export?format=csv";
     map<u_int, vector<string>> day_block_times {
         {0, {"10:00", "13:00", "15:00", "17:00", "19:00"}},
-        {1, {"09:00", "11:00", "14:00", "16:00"}},
-        {2, {"09:00", "11:00", "14:00", "16:00"}}
+        {1, {"09:00", "11:00", "14:00", "16:00", "18:00"}},
+        {2, {"09:00", "11:00", "14:00", "16:00", "18:00"}}
     };
 
     vector<Lecture> lectures;
@@ -165,13 +165,20 @@ class Harmonogram
 
     void fetch_data()
     {
+        static mutex mtx;
+        lock_guard<mutex> lock(mtx);
+
         cout << "Fetching Harmonogram..." << endl;
 
-        cpr::Response r = cpr::Get(cpr::Url{URL});
+        cpr::Response r = cpr::Get(cpr::Url{URL + + "&t=" + to_string(std::time(nullptr))});
+
+        if (r.error) return;
 
         csv::CSVReader reader = csv::parse(r.text);
 
         u_int row_num = 0;
+
+        lectures.clear();
 
         for (csv::CSVRow row : reader)
         {
@@ -331,6 +338,49 @@ class Harmonogram
     }
 };
 
+class EventSystem
+{
+private:
+    string next_event;
+    time_t last_event_time = 0;
+    time_t next_event_time = 0;
+    string event_types[3] = {"crack", "sunlight", "blur"};
+
+public:
+    EventSystem()
+    {
+        create_new_event();
+    }
+
+    void create_new_event()
+    {
+        while (next_event_time < time(nullptr))
+        {
+            last_event_time = next_event_time;
+            next_event_time = time(nullptr) + 300 + rand() % 100;
+        }
+        string possible_next_event = next_event;
+        while (next_event == possible_next_event)
+        {
+            possible_next_event = event_types[rand() % 3];
+        }
+        next_event = possible_next_event;
+    }
+
+    crow::json::wvalue get_next_event()
+    {
+        if (next_event_time < time(nullptr))
+        {
+            create_new_event();
+        }
+        crow::json::wvalue res;
+        res["in_time"] = next_event_time - time(nullptr);
+        res["type"] = next_event;
+
+        return res;
+    }
+};
+
 int main()
 {
     crow::App<crow::CORSHandler> app;
@@ -342,6 +392,16 @@ int main()
         .origin("*");
 
     Harmonogram h = Harmonogram();
+    EventSystem e = EventSystem();
+
+    CROW_ROUTE(app, "/")([&h](){
+        return crow::response(200, "Hello World!");
+    });
+
+    CROW_ROUTE(app, "/API/next_event")([&e](){
+        crow::json::wvalue res = e.get_next_event();
+        return crow::response(200, res);
+    });
 
     CROW_ROUTE(app, "/API/harmonogram")([&h](){
         try
