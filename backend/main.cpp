@@ -18,6 +18,7 @@ class Lecture
     enum Rooms
     {
         P11,
+        P12,
         P22,
         AULA,
         SBOROVNA,
@@ -52,6 +53,7 @@ class Lecture
 
     const map<Rooms, string> room_names = {
         {P11, "P1.1"},
+        {P12, "P1.2"},
         {P22, "P2.2"},
         {AULA, "Aula"},
         {SBOROVNA, "Sborovna"},
@@ -99,7 +101,7 @@ class Lecture
         return json;
     }
 
-    crow::json::wvalue Jsonify()
+    crow::json::wvalue jsonify()
     {
         crow::json::wvalue json = {
             {"id", _id},
@@ -120,12 +122,14 @@ class Lecture
 class Harmonogram
 {
     bool is_ready = false;
+    time_t last_fetch_time;
 
-    string URL = "https://docs.google.com/spreadsheets/d/1JpmNZXqIA_AQWs6JQbDYk9MqxdLqfUBAFA9d9XpK8ek/export?format=csv";
+    const u_int TTL = 1800; // Time to live in seconds; 1800 = 30 min
+    const string URL = "https://docs.google.com/spreadsheets/d/1JpmNZXqIA_AQWs6JQbDYk9MqxdLqfUBAFA9d9XpK8ek/export?format=csv";
     map<u_int, vector<string>> day_block_times {
         {0, {"10:00", "13:00", "15:00", "17:00", "19:00"}},
-        {1, {"09:00", "11:00", "14:00", "16:00"}},
-        {2, {"09:00", "11:00", "14:00", "16:00"}}
+        {1, {"09:00", "11:00", "14:00", "16:00", "18:00"}},
+        {2, {"09:00", "11:00", "14:00", "16:00", "18:00"}}
     };
 
     vector<Lecture> lectures;
@@ -139,6 +143,7 @@ class Harmonogram
 
     const map<string, Lecture::Rooms> rooms = {
         {"P1.1", Lecture::Rooms::P11},
+        {"P1.2", Lecture::Rooms::P12},
         {"P2.2", Lecture::Rooms::P22, },
         {"Aula", Lecture::Rooms::AULA},
         {"Sborovna", Lecture::Rooms::SBOROVNA},
@@ -160,11 +165,20 @@ class Harmonogram
 
     void fetch_data()
     {
-        cpr::Response r = cpr::Get(cpr::Url{URL});
+        static mutex mtx;
+        lock_guard<mutex> lock(mtx);
+
+        cout << "Fetching Harmonogram..." << endl;
+
+        cpr::Response r = cpr::Get(cpr::Url{URL + + "&t=" + to_string(std::time(nullptr))});
+
+        if (r.error) return;
 
         csv::CSVReader reader = csv::parse(r.text);
 
         u_int row_num = 0;
+
+        lectures.clear();
 
         for (csv::CSVRow row : reader)
         {
@@ -236,10 +250,12 @@ class Harmonogram
     {
         crow::json::wvalue harmonogram;
 
-        istringstream time_stream("Thu, 1 Jan 1970 00:00:00");
+        ostringstream time_stream("Thu, 1 Jan 1970 00:00:00");
 
-        tm time;
-        time_stream >> get_time(&time, "%a, %d %b %Y %H:%M:%S");
+        time_t t = std::time(nullptr);
+        last_fetch_time = t;
+        tm time = *localtime(&t);
+        time_stream << put_time(&time, "%a, %d %b %Y %H:%M:%S");
 
         crow::json::wvalue::list days;
 
@@ -289,6 +305,7 @@ class Harmonogram
 
     crow::json::wvalue get_details(int id)
     {
+        compare_and_refetch();
         Lecture& suspected_lecture = lectures[id];
         if (suspected_lecture.get_id() == id) // Assumes they are sorted
         {
@@ -306,7 +323,61 @@ class Harmonogram
 
     crow::json::wvalue get_harmonogram()
     {
+        compare_and_refetch();
         return harmonogram;
+    }
+
+    private:
+    void compare_and_refetch()
+    {
+        time_t t = std::time(nullptr);
+        if (last_fetch_time + TTL < t)
+        {
+            fetch_data();
+        }
+    }
+};
+
+class EventSystem
+{
+private:
+    string next_event;
+    time_t last_event_time = 0;
+    time_t next_event_time = 0;
+    string event_types[3] = {"crack", "sunlight", "blur"};
+
+public:
+    EventSystem()
+    {
+        create_new_event();
+    }
+
+    void create_new_event()
+    {
+        while (next_event_time < time(nullptr))
+        {
+            last_event_time = next_event_time;
+            next_event_time = time(nullptr) + 300 + rand() % 100;
+        }
+        string possible_next_event = next_event;
+        while (next_event == possible_next_event)
+        {
+            possible_next_event = event_types[rand() % 3];
+        }
+        next_event = possible_next_event;
+    }
+
+    crow::json::wvalue get_next_event()
+    {
+        if (next_event_time < time(nullptr))
+        {
+            create_new_event();
+        }
+        crow::json::wvalue res;
+        res["in_time"] = next_event_time - time(nullptr);
+        res["type"] = next_event;
+
+        return res;
     }
 };
 
@@ -321,9 +392,15 @@ int main()
         .origin("*");
 
     Harmonogram h = Harmonogram();
+    EventSystem e = EventSystem();
 
     CROW_ROUTE(app, "/")([&h](){
-        return "Hello world";
+        return crow::response(200, "Hello World!");
+    });
+
+    CROW_ROUTE(app, "/API/next_event")([&e](){
+        crow::json::wvalue res = e.get_next_event();
+        return crow::response(200, res);
     });
 
     CROW_ROUTE(app, "/API/harmonogram")([&h](){

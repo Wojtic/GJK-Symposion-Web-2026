@@ -1,3 +1,5 @@
+const eventAPIURL = "http://127.0.0.1:8080/API/next_event";
+
 const canvas_id = [
   "can_bgr_nav",
   "can_bgr_uvod",
@@ -114,4 +116,72 @@ document.addEventListener("DOMContentLoaded", () => {
       closePopup();
     }
   });
+
+  scheduleNextEvent();
 });
+
+async function scheduleNextEvent() {
+  const r = await fetch(eventAPIURL);
+  console.log("Setting up event");
+
+  if(r.ok) {
+    const json = await r.json();
+    console.log(json["type"]);
+    switch (json["type"]) {
+      case "crack":
+        console.log("Doing crack in " + json["in_time"]*1000);
+        setTimeout(() => {
+          doCrack();
+          setTimeout(scheduleNextEvent, 1000);
+        }, json["in_time"]*1000);
+        break;
+      case "sunlight":
+        console.log("Doing sunlight in " + json["in_time"]*1000);
+        setTimeout(() => {
+          doCrack();
+          setTimeout(scheduleNextEvent, 1000);
+        }, json["in_time"]*1000);
+        break;
+      case "blur":
+        console.log("Doing blur in " + json["in_time"]*1000);
+        setTimeout(() => {
+          doCrack();
+          setTimeout(scheduleNextEvent, 1000);
+        }, json["in_time"]*1000);
+        break;
+    }
+  } else {
+    console.log("Failed event");
+    setTimeout(scheduleNextEvent, 1000);
+  }
+}
+
+function doCrack() {
+  const crackEl = document.getElementById("crack");
+  crackEl.style.display = 'block';
+  document.querySelector('#crack img').style.top = Math.random()*(window.innerHeight - 408) + "px";
+  document.querySelector('#crack img').style.left = Math.random()*(window.innerWidth - 567) + "px";
+  setTimeout(() => {
+    crackEl.style.display = 'none';
+  }, 10000);
+}
+
+function doBlur() {
+  const blurEl = document.getElementById("blur");
+  blurEl.style.display = 'block';
+  blurEl.classList.add("reveal");
+  setTimeout(() => {
+    blurEl.classList.remove("reveal");
+    blurEl.style.display = 'none';
+  }, 10000);
+}
+
+function doSunlight() {
+  const sunlightEl = document.getElementById("sunlight");
+  sunlightEl.style.display = 'block';
+  sunlightEl.classList.add("drift");
+  setTimeout(() => {
+    sunlightEl.classList.remove("drift");
+    sunlightEl.style.display = 'none';
+  }, 15000);
+}
