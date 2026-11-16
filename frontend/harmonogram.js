@@ -1,3 +1,4 @@
+let last_three_click_times = [0, 0, 0];
 async function fill_harmonogram() {
   const getData = async () => {
     const time = new Date().getTime(); // Add it to the URL to prevent caching
@@ -18,6 +19,7 @@ async function fill_harmonogram() {
   const data = await getData();
   const days = data["days"];
 
+  let empty_counter = 0;
   days.forEach((day, index) => {
     const container = document.getElementById("harmonogram_days");
     const day_div = document.createElement("div");
@@ -87,7 +89,10 @@ async function fill_harmonogram() {
           cell.classList.add("clickable");
         } else {
           cell.classList.add("empty");
+          cell.setAttribute("onclick", "crack(" + empty_counter + ")");
+          cell.id = "empty_cell_" + empty_counter;
           lecture.name = "";
+          empty_counter++;
         }
         const presenter_p = document.createElement("p");
         presenter_p.classList.add("presenter");
@@ -118,6 +123,21 @@ function showPopup() {
 function closePopup() {
   document.getElementById("popup").style.display = "none";
   document.getElementById("background_darken").style.display = "none";
+}
+
+function crack(id) {
+  last_three_click_times.shift();
+  last_three_click_times.push(new Date().getTime());
+  if (
+    last_three_click_times[2] - last_three_click_times[0] < 1000 &&
+    last_three_click_times[1] - last_three_click_times[0] < 1000
+  ) {
+    const cell = document.getElementById("empty_cell_" + id);
+    cell.classList.add("cracked_cell");
+    setTimeout(() => {
+      cell.classList.remove("cracked_cell");
+    }, 5000);
+  }
 }
 
 async function popup(id) {

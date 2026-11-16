@@ -119,6 +119,13 @@ nav #links a {
     100% {opacity: 0%;}
 }
 
+.cracked_cell {
+    background-image: url("media/crack-2.avif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 #crack {
     pointer-events: none;
     z-index: 10;

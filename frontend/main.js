@@ -1,4 +1,4 @@
-const eventAPIURL = "http://127.0.0.1:8080/API/next_event";
+const eventAPIURL = "https://backend-63651199757.europe-central2.run.app/API/next_event";
 
 const canvas_id = [
   "can_bgr_nav",
